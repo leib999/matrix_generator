@@ -413,10 +413,15 @@ void connectivity_matrix::load_network(string input_file_name){
 		return;
 	}
 	
-	//2.5: check the layers data
+	//2.5: check if there is layers data
 	if(le_pos - lb_pos == 1){
 		cout << "ERROR 2.5: there is no layers data" << endl;
 	}
+	//2.6: check if there is matrix data
+	if(cme_pos - cmb_pos == 1){
+		cout << "ERROR 2.6: there is no matrix data" << endl;
+	}
+	
 	
 	for (int i = lb_pos+1; i < le_pos; i++){
 		cout << lines[i] << endl;		
