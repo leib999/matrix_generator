@@ -397,7 +397,6 @@ void connectivity_matrix::load_network(string input_file_name){
 	
 	//2.3: check the labels order
 	//2.3.1: check the LAYERS labels order
-	cout << "le_pos=" << le_pos << " lb_pos=" << lb_pos << endl;	//debug
 	if(le_pos - lb_pos < 0){
 		cout << "\nERROR 2.3.1: LAYERS labels not in order" << endl;
 		return;
@@ -415,7 +414,6 @@ void connectivity_matrix::load_network(string input_file_name){
 	}
 	
 	//2.5: check the layers data
-	cout << le_pos << " " << lb_pos << endl;
 	if(le_pos - lb_pos == 1){
 		cout << "ERROR 2.5: there is no layers data" << endl;
 	}
