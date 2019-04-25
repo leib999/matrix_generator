@@ -10,6 +10,8 @@
 
 using namespace std;
 
+void remove_empty_lines(vector<string> &vec);
+
 class connectivity_matrix {
 	private:
 		bool **m;		//the matrix. it's a square and simmetric one
@@ -301,21 +303,21 @@ void connectivity_matrix::record_network(string output_file_name){
 	output_stream.open(output_file_name.c_str());	//creates an output file
 	
 	//1st: print the layers structure
-	output_stream << "\nLAYERS_BEGIN" << endl;	
+	output_stream << "LAYERS_BEGIN" << endl;	
 	for(auto iter = layers.begin(); iter != layers.end(); ++iter){
 		output_stream << *iter << endl;
 	}
 	output_stream << "LAYERS_END" << endl;
 	
 	//2nd: print the matrix
-	output_stream << "\nCONNECTIVIY_MATRIX_BEGIN" << endl;
+	output_stream << "CONNECTIVIY_MATRIX_BEGIN" << endl;
 	for (int i = 0; i < n; i++) {
 		for (int j = 0; j < n; j++) {
 			output_stream << m[i][j] << " ";
 		}
 		output_stream << endl;
 	}
-	output_stream << "CONNECTIVIY_MATRIX_END" << endl;
+	output_stream << "CONNECTIVIY_MATRIX_END";
 		
 	//3rd: close file and annouces it 
 	output_stream.close();
@@ -422,28 +424,8 @@ void connectivity_matrix::load_network(string input_file_name){
 		cout << "ERROR 2.6: there is no matrix data" << endl;
 	}
 	
+	//2.7: remove empty lines and reduce lines vector
 	
-	for (int i = lb_pos+1; i < le_pos; i++){
-		cout << lines[i] << endl;		
-	}
-	
-	
-//	int n_lines = 0;		//number of valid lines between LB and LE labels (lines with int numbers whithout spaces)
-//	do {
-//		getline(input_stream, line);	//store the current line from "input_stream" into the "line" string
-//		cout << "2 " << line << endl;
-//		if(line == le){		//check if the layers_end flag was reached
-//			break;
-//		} else {
-//			if(line.empty()){	//2.5.1:check if line is empty
-//				cout << "ERROR 2.5.1: empty line at layers data" << endl;
-//				return;
-//			} else {
-//				n_lines++;
-//				getline(input_stream, line);
-//			}		
-//		}
-//	} while(line != le);
 
 }
 
