@@ -345,10 +345,10 @@ void connectivity_matrix::load_network(string input_file_name){
 	unsigned int flag_le = 0;		//flag to identify if the LAYERS_END label was found
 	unsigned int flag_cmb = 0;		//flag to identify if the CONNECTIVIY_MATRIX_BEGIN label was found
 	unsigned int flag_cme = 0;		//flag to identify if the CONNECTIVIY_MATRIX_END label was found	
-	unsigned int lb_pos; 	//register the position of the LAYERS_BEGIN label on the stream
-	unsigned int le_pos;  	//register the position of the LAYERS_END label on the stream
-	unsigned int cmb_pos;   //register the position of the CONNECTIVIY_MATRIX_BEGIN label on the stream
-	unsigned int cme_pos;	//register the position of the CONNECTIVIY_MATRIX_END label on the stream
+	int lb_pos; 	//register the position of the LAYERS_BEGIN label on the stream
+	int le_pos;  	//register the position of the LAYERS_END label on the stream
+	int cmb_pos;   //register the position of the CONNECTIVIY_MATRIX_BEGIN label on the stream
+	int cme_pos;	//register the position of the CONNECTIVIY_MATRIX_END label on the stream
 	
 	//2.1.2: loop the file looking for labels
 	while(getline(input_stream, line)){		//load the file until the end
@@ -397,6 +397,7 @@ void connectivity_matrix::load_network(string input_file_name){
 	
 	//2.3: check the labels order
 	//2.3.1: check the LAYERS labels order
+	cout << "le_pos=" << le_pos << " lb_pos=" << lb_pos << endl;	//debug
 	if(le_pos - lb_pos < 0){
 		cout << "\nERROR 2.3.1: LAYERS labels not in order" << endl;
 		return;
