@@ -392,7 +392,6 @@ void connectivity_matrix::load_network(string input_file_name){
 		 	cout << cme << " ";
 		}
 		cout << " label(s)." << endl;
-		~lines;
 		return;
 	}
 	
@@ -415,30 +414,32 @@ void connectivity_matrix::load_network(string input_file_name){
 	}
 	
 	//2.5: check the layers data
-	input_stream.seekg(lb_pos);		//sets the input stream position before the 1st character of LAYERS_BEGIN label
-	getline(input_stream, line);	//sets the input stream position of the next character right after LAYERS_BEGIN label
-	cout << "1 " << line << endl;
-	int n_lines = 0;		//number of valid lines between LB and LE labels (lines with int numbers whithout spaces)
-	do {
-		getline(input_stream, line);	//store the current line from "input_stream" into the "line" string
-		cout << "2 " << line << endl;
-		if(line == le){		//check if the layers_end flag was reached
-			break;
-		} else {
-			if(line.empty()){	//2.5.1:check if line is empty
-				cout << "ERROR 2.5.1: empty line at layers data" << endl;
-				return;
-			} else {
-				n_lines++;
-				getline(input_stream, line);
-			}		
-		}
-	} while(line != le);
-	
-	if(n_lines == 0){
+	cout << le_pos << " " << lb_pos << endl;
+	if(le_pos - lb_pos == 1){
 		cout << "ERROR 2.5: there is no layers data" << endl;
 	}
 	
+	for (int i = lb_pos; i < le_pos; i++){
+		cout << lines[i] << endl;		
+	}
+	
+	
+//	int n_lines = 0;		//number of valid lines between LB and LE labels (lines with int numbers whithout spaces)
+//	do {
+//		getline(input_stream, line);	//store the current line from "input_stream" into the "line" string
+//		cout << "2 " << line << endl;
+//		if(line == le){		//check if the layers_end flag was reached
+//			break;
+//		} else {
+//			if(line.empty()){	//2.5.1:check if line is empty
+//				cout << "ERROR 2.5.1: empty line at layers data" << endl;
+//				return;
+//			} else {
+//				n_lines++;
+//				getline(input_stream, line);
+//			}		
+//		}
+//	} while(line != le);
 
 }
 
