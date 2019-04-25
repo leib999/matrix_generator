@@ -10,7 +10,7 @@
 
 using namespace std;
 
-void remove_empty_lines(vector<string> &vec);
+void remove_empty_lines(vector<string> *vec);
 
 class connectivity_matrix {
 	private:
@@ -425,8 +425,20 @@ void connectivity_matrix::load_network(string input_file_name){
 	}
 	
 	//2.7: remove empty lines and reduce lines vector
-	
+	remove_empty_lines(&lines);
+	for(auto i = lines.begin(); i < lines.end(); i++){
+		cout << *i << endl;
+	}
 
+}
+
+void remove_empty_lines(vector<string> *vec){
+	for(vector<string>::iterator i = (*vec).begin(); i < (*vec).end(); i++){	//loop through all string vector elements
+		if(i->empty()){		//if the string is empty, remove it
+			(*vec).erase(i);	//erase the line. the iterator jumps to the next
+			i--;	//in order to don't skip a new line, the iterator is decreased
+		}
+	}
 }
 
 #endif
