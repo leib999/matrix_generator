@@ -418,7 +418,7 @@ void connectivity_matrix::load_network(string input_file_name){
 		cout << "ERROR 2.5: there is no layers data" << endl;
 	}
 	
-	for (int i = lb_pos; i < le_pos; i++){
+	for (int i = lb_pos+1; i < le_pos; i++){
 		cout << lines[i] << endl;		
 	}
 	
