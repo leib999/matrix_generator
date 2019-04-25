@@ -418,10 +418,12 @@ void connectivity_matrix::load_network(string input_file_name){
 	//2.5: check if there is layers data
 	if(le_pos - lb_pos == 1){
 		cout << "ERROR 2.5: there is no layers data" << endl;
+		return;
 	}
 	//2.6: check if there is matrix data
 	if(cme_pos - cmb_pos == 1){
 		cout << "ERROR 2.6: there is no matrix data" << endl;
+		return;
 	}
 	
 	//2.7: remove empty lines and reduce lines vector
@@ -429,6 +431,8 @@ void connectivity_matrix::load_network(string input_file_name){
 	for(auto i = lines.begin(); i < lines.end(); i++){
 		cout << *i << endl;
 	}
+	
+	
 
 }
 
